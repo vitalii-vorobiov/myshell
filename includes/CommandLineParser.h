@@ -5,15 +5,17 @@
 
 namespace po = boost::program_options;
 
-class CommandLineParser {
-private:
-    std::vector<std::string> argv;
-public:
-    int set_argv(std::string str);
-    char** get_argv();
-    int get_argc();
-    void print_argv();
-    char* get_program_name();
-};
+namespace myshell {
+    class CommandLineParser {
+    private:
+        std::vector<std::string> argv;
+        std::vector<char*> p;
+    public:
+        int set_argv(std::string str);
+        char** get_argv();
+        int get_argc();
+        char* get_program_name();
+    };
+}
 
 #endif //MYSHELL_COMMANDLINEPARSER_H

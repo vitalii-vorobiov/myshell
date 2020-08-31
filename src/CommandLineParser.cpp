@@ -1,7 +1,7 @@
 #include <iostream>
 #include "CommandLineParser.h"
 
-int CommandLineParser::set_argv(std::string str) {
+int myshell::CommandLineParser::set_argv(std::string str) {
     argv.clear();
     bool isQuoted;
     std::string token;
@@ -41,8 +41,9 @@ int CommandLineParser::set_argv(std::string str) {
     return 0;
 }
 
-char** CommandLineParser::get_argv() {
-    std::vector<char*> p(argv.size()+1);
+char** myshell::CommandLineParser::get_argv() {
+    p.clear();
+    p = std::vector<char*>(argv.size()+1);
     for(size_t i = 0; i < argv.size(); ++i)
     {
         p[i] = argv[i].data();
@@ -51,11 +52,11 @@ char** CommandLineParser::get_argv() {
     return p.data();
 }
 
-int CommandLineParser::get_argc() {
+int myshell::CommandLineParser::get_argc() {
     return argv.size();
 }
 
-char* CommandLineParser::get_program_name() {
+char* myshell::CommandLineParser::get_program_name() {
     if (argv.size() > 0) {
         return argv[0].data();
     }
